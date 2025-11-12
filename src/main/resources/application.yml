@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: userService
+    
+  config:
+    import: optional:configserver:http://localhost:8888
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+# Como ejecutar: 
+#  en la terminal, situados en el directorio userService:
+#  1. mvn clean package -DDB_USER=nombre_usuario_db -DDB_PASS=contraseña_db (primero ha de estar corriendo el config server y el service registry)
+#  2. java -jar target/userService-0.0.1-SNAPSHOT.jar --DB_USER=nombre_usuario_db --DB_PASS=contraseña_db
